@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Resources - EcoWave</title>
+    <style>
+	
+	<link rel="Ecowave External Stylesheet" href="style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #001f3f 0%, #0074D9 40%, #39CCCC  100%);
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 31, 63, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #39CCCC, #0074D9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 1.8em;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(57, 204, 204, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a.active {
+            background: rgba(57, 204, 204, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-section p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .featured-video {
+            background: rgba(255, 255, 255, 0.95);
+            color: #2c3e50;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            text-align: center;
+        }
+
+        .featured-video h2 {
+            color: #001f3f;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .featured-video h2::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #39CCCC, #0074D9);
+            display: block;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .video-card {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            max-width: 500px;
+            height: 280px;
+            background: linear-gradient(135deg, #001f3f, #0074D9);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: #0074D9;
+            transition: all 0.3s ease;
+        }
+
+        .video-thumbnail:hover .play-button {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .watch-video-btn {
+            background: linear-gradient(45deg, #0074D9, #39CCCC);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 1.1em;
+            display: inline-block;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .watch-video-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            color: white;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .resource-category {
+            background: rgba(255, 255, 255, 0.95);
+            color: #2c3e50;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .resource-category:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .resource-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .resource-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #39CCCC, #0074D9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
+
+        .resource-category h3 {
+            color: #001f3f;
+            font-size: 1.4em;
+            margin: 0;
+        }
+
+        .resource-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .resource-list li {
+            margin: 10px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .resource-list li:last-child {
+            border-bottom: none;
+        }
+
+        .resource-link {
+            color: #0074D9;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .resource-link:hover {
+            color: #39CCCC;
+            text-decoration: underline;
+        }
+
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #39CCCC;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .wave-animation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="%23ffffff20"></path></svg>') repeat-x;
+            animation: wave 10s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-1200px); }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            h1 {
+                font-size: 1.4em;
+            }
+
+            .hero-section h2 {
+                font-size: 2.2em;
+            }
+
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .featured-video {
+                padding: 25px;
+            }
+
+            .video-thumbnail {
+                height: 200px;
+            }
+
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wave-animation"></div>
+    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">🌊</div>
+                    <h1>EcoWave: Protecting Our Oceans, One Wave at a Time</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="EcoWave.html">Home</a></li>
+                        <li><a href="About us.html">About Us</a></li>
+                        <li><a href="Campaigns.html">Campaigns</a></li>
+                        <li><a href="Resources.html" class="active">Resources</a></li>
+                        <li><a href="Contact us.html">Contact Us</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="Donations.html">Donate</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero-section">
+                <h2>Educational Resources</h2>
+                <p>Discover comprehensive materials to learn about ocean pollution, marine conservation, and how you can make a difference in protecting our blue planet.</p>
+            </section>
+
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <p>Educational Videos</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">25+</div>
+                    <p>Research Articles</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">15+</div>
+                    <p>Interactive Guides</p>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">10K+</div>
+                    <p>Students Reached</p>
+                </div>
+            </div>
+
+            <section class="featured-video">
+                <h2>🎬 Featured Documentary: Ocean Pollution Crisis</h2>
+                <p style="margin-bottom: 20px; font-size: 1.1em;">Watch this powerful documentary that exposes the devastating impact of plastic pollution on our oceans and marine life.</p>
+                
+                <div class="video-card">
+                    <div class="video-thumbnail" onclick="openVideo()">
+                        <div class="play-button">▶️</div>
+                    </div>
+                    <h3 style="color: #001f3f; margin-bottom: 15px;">The Ocean Plastic Crisis: A Wake-Up Call</h3>
+                    <p style="color: #34495e; margin-bottom: 15px;">
+                        This eye-opening 45-minute documentary explores how 8 million tons of plastic waste enter our oceans every year, 
+                        affecting marine ecosystems and ultimately impacting human health. Features real footage from the Great Pacific Garbage Patch 
+                        and interviews with leading marine biologists.
+                    </p>
+                    <a href="#" onclick="openVideo()" class="watch-video-btn">
+                        🎥 Watch Ocean Pollution Documentary
+                    </a>
+                </div>
+                
+                <div style="margin-top: 30px; padding: 20px; background: rgba(57, 204, 204, 0.1); border-radius: 10px;">
+                    <h4 style="color: #001f3f; margin-bottom: 10px;">🎓 Perfect for:</h4>
+                    <p style="color: #34495e;">Students, educators, environmental enthusiasts, and anyone wanting to understand the scale of ocean pollution and solutions.</p>
+                </div>
+            </section>
+
+            <div class="resources-grid">
+                <div class="resource-category">
+                    <div class="resource-header">
+                        <div class="resource-icon">📚</div>
+                        <h3>Research & Articles</h3>
+                    </div>
+                    <ul class="resource-list">
+                        <li><a href="#" class="resource-link">The State of Ocean Pollution 2024 Report</a></li>
+                        <li><a href="#" class="resource-link">Microplastics in Marine Food Chains</a></li>
+                        <li><a href="#" class="resource-link">Climate Change and Ocean Acidification</a></li>
+                        <li><a href="#" class="resource-link">Success Stories in Ocean Conservation</a></li>
+                        <li><a href="#" class="resource-link">The Economics of Marine Protected Areas</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-category">
+                    <div class="resource-header">
+                        <div class="resource-icon">🎥</div>
+                        <h3>Educational Videos</h3>
+                    </div>
+                    <ul class="resource-list">
+                        <li><a href="#" class="resource-link">Ocean Pollution Crisis Documentary (Featured)</a></li>
+                        <li><a href="#" class="resource-link">How Plastic Gets Into Our Oceans</a></li>
+                        <li><a href="#" class="resource-link">Marine Life Impact Stories</a></li>
+                        <li><a href="#" class="resource-link">Solutions: What Can You Do?</a></li>
+                        <li><a href="#" class="resource-link">Beach Cleanup Best Practices</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-category">
+                    <div class="resource-header">
+                        <div class="resource-icon">👨‍🏫</div>
+                        <h3>Teaching Materials</h3>
+                    </div>
+                    <ul class="resource-list">
+                        <li><a href="#" class="resource-link">Ocean Conservation Lesson Plans</a></li>
+                        <li><a href="#" class="resource-link">Interactive Pollution Quiz</a></li>
+                        <li><a href="#" class="resource-link">Student Activity Workbooks</a></li>
+                        <li><a href="#" class="resource-link">Presentation Slides for Educators</a></li>
+                        <li><a href="#" class="resource-link">Field Trip Planning Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-category">
+                    <div class="resource-header">
+                        <div class="resource-icon">🔬</div>
+                        <h3>Scientific Data</h3>
+                    </div>
+                    <ul class="resource-list">
+                        <li><a href="#" class="resource-link">Global Ocean Pollution Statistics</a></li>
+                        <li><a href="#" class="resource-link">Marine Species Impact Database</a></li>
+                        <li><a href="#" class="resource-link">Water Quality Monitoring Data</a></li>
+                        <li><a href="#" class="resource-link">Pollution Source Tracking Studies</a></li>
+                        <li><a href="#" class="resource-link">Recovery Success Metrics</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-category">
+                    <div class="resource-header">
+                        <div class="resource-icon">🏃‍♂️</div>
+                        <h3>Action Guides</h3>
+                    </div>
+                    <ul class="resource-list">
+                        <li><a href="#" class="resource-link">How to Organize a Beach Cleanup</a></li>
+                        <li><a href="#" class="resource-link">Reducing Plastic in Daily Life</a></li>
+                        <li><a href="#" class="resource-link">Starting an Environmental Club</a></li>
+                        <li><a href="#" class="resource-link">Advocacy and Policy Change</a></li>
+                        <li><a href="#" class="resource-link">Corporate Sustainability Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-category">
+                    <div class="resource-header">
+                        <div class="resource-icon">📱</div>
+                        <h3>Digital Tools</h3>
+                    </div>
+                    <ul class="resource-list">
+                        <li><a href="#" class="resource-link">Ocean Health Calculator</a></li>
+                        <li><a href="#" class="resource-link">Plastic Footprint Tracker</a></li>
+                        <li><a href="#" class="resource-link">Marine Species Identification App</a></li>
+                        <li><a href="#" class="resource-link">Cleanup Event Organizer Tool</a></li>
+                        <li><a href="#" class="resource-link">Educational Games & Quizzes</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <section class="hero-section">
+                <h2>Spread the Knowledge</h2>
+                <p>Share these resources with your community, schools, and social networks. Education is the first step toward creating lasting change in ocean conservation.</p>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        function openVideo() {
+            // You can replace this URL with your actual video link
+            // For demonstration, I'm using a popular ocean pollution documentary
+            const videoUrl = "https://www.youtube.com/watch?v=HQTUWK7CM-Y"; // Example: A Plastic Ocean documentary
+            
+            // Create a modal or redirect to video
+            const confirmation = confirm("This will take you to an educational video about ocean pollution. Would you like to continue?");
+            
+            if (confirmation) {
+                // Open in new tab
+                window.open(videoUrl, '_blank');
+                
+                // Or you could embed the video in a modal
+                // showVideoModal(videoUrl);
+            }
+        }
+        
+        // Optional: Function to show video in a modal instead of new tab
+        function showVideoModal(videoUrl) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0, 0, 0, 0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+            `;
+            
+            const videoContainer = document.createElement('div');
+            videoContainer.style.cssText = `
+                background: white;
+                padding: 20px;
+                border-radius: 15px;
+                max-width: 800px;
+                width: 90%;
+            `;
+            
+            videoContainer.innerHTML = `
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <h3 style="color: #001f3f; margin: 0;">Ocean Pollution Documentary</h3>
+                    <button onclick="this.closest('.modal').remove()" style="background: none; border: none; font-size: 24px; cursor: pointer;">×</button>
+                </div>
+                <iframe width="100%" height="400" src="${videoUrl.replace('watch?v=', 'embed/')}" frameborder="0" allowfullscreen></iframe>
+            `;
+            
+            modal.className = 'modal';
+            modal.appendChild(videoContainer);
+            document.body.appendChild(modal);
+            
+            // Close modal when clicking outside
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.remove();
+                }
+            });
+        }
+
+        // Add click handlers to all resource links
+        document.querySelectorAll('.resource-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const resourceName = this.textContent;
+                alert(`This would take you to: ${resourceName}\n\nIn a real implementation, this would link to the actual educational resource.`);
+            });
+        });
+    </script>
+</body>
+</html>

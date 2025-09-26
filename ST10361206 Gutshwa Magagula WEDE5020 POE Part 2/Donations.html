@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - EcoWave</title>
+    <style>
+	
+	<link rel="Ecowave External Stylesheet style" href="style.css">
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #001f3f 0%, #0074D9 40%, #39CCCC  100%);
+            min-height: 100vh;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(0, 31, 63, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #39CCCC, #0074D9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 1.8em;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin: 0;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            margin: 0;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            background: rgba(57, 204, 204, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        nav a.active {
+            background: rgba(57, 204, 204, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        main {
+            padding: 40px 0;
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-section h2 {
+            font-size: 2.8em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-section p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .impact-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .impact-card {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .impact-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .impact-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .impact-card h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            color: #39CCCC;
+        }
+
+        .donation-section {
+            background: rgba(255, 255, 255, 0.95);
+            color: #2c3e50;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .donation-section h2 {
+            color: #001f3f;
+            font-size: 2.2em;
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .donation-section h2::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #39CCCC, #0074D9);
+            display: block;
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .donation-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .donation-card {
+            background: #f8f9fa;
+            border: 3px solid transparent;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .donation-card:hover {
+            border-color: #39CCCC;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .donation-card.selected {
+            border-color: #0074D9;
+            background: linear-gradient(135deg, #0074D9, #39CCCC);
+            color: white;
+        }
+
+        .donation-amount {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #001f3f;
+            margin-bottom: 15px;
+        }
+
+        .donation-card.selected .donation-amount {
+            color: white;
+        }
+
+        .donation-impact {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+
+        .donation-card.selected .donation-impact {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .custom-amount {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .custom-amount h3 {
+            margin-bottom: 20px;
+            color: #001f3f;
+        }
+
+        .amount-input {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 0;
+            font-size: 1.2em;
+            transition: border-color 0.3s ease;
+        }
+
+        .amount-input:focus-within {
+            border-color: #39CCCC;
+            box-shadow: 0 0 0 3px rgba(57, 204, 204, 0.1);
+        }
+
+        .amount-input span {
+            background: #f8f9fa;
+            padding: 15px;
+            border-right: 2px solid #ddd;
+            font-weight: bold;
+            color: #001f3f;
+        }
+
+        .amount-input input {
+            border: none;
+            padding: 15px;
+            font-size: 1.2em;
+            width: 150px;
+            outline: none;
+        }
+
+        .donation-form {
+            margin-top: 40px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #001f3f;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #39CCCC;
+            box-shadow: 0 0 0 3px rgba(57, 204, 204, 0.1);
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .payment-method {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            border-color: #39CCCC;
+            transform: translateY(-2px);
+        }
+
+        .payment-method.selected {
+            border-color: #0074D9;
+            background: linear-gradient(135deg, #0074D9, #39CCCC);
+            color: white;
+        }
+
+        .donate-button {
+            background: linear-gradient(45deg, #0074D9, #39CCCC);
+            color: white;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto 0;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .donate-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .donate-button:active {
+            transform: translateY(-1px);
+        }
+
+        .monthly-option {
+            background: rgba(57, 204, 204, 0.1);
+            border: 2px solid #39CCCC;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .monthly-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            background: #ddd;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .toggle-switch.active {
+            background: #39CCCC;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 24px;
+            height: 24px;
+            background: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active .toggle-slider {
+            transform: translateX(30px);
+        }
+
+        .wave-animation {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" fill="%23ffffff20"></path></svg>') repeat-x;
+            animation: wave 10s linear infinite;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        @keyframes wave {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-1200px); }
+        }
+
+        .security-info {
+            background: rgba(39, 174, 96, 0.1);
+            border: 2px solid #27ae60;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            h1 {
+                font-size: 1.4em;
+            }
+
+            .hero-section h2 {
+                font-size: 2.2em;
+            }
+
+            .donation-options {
+                grid-template-columns: 1fr;
+            }
+
+            .donation-section {
+                padding: 25px;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .payment-methods {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .amount-input input {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wave-animation"></div>
+    
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo">🌊</div>
+                    <h1>EcoWave: Protecting Our Oceans, One Wave at a Time</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="EcoWave.html" class="active">Home</a></li>
+                        <li><a href="About us.html" class="active">About Us</a></li>
+                        <li><a href="Campaigns.html" class="active">Campaigns</a></li>
+                        <li><a href="Resources.html" class="active">Resources</a></li>
+                        <li><a href="Contact us.html" class="active">Contact Us</a></li>
+                        <li><a href="volunteer.html" class="active">Volunteer</a></li>
+						<li><a href="Donations.html" class="active">Donate</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="hero-section">
+                <h2>Support Ocean Conservation</h2>
+                <p>Your donation directly funds beach cleanups, education programs, and research initiatives that protect marine life for future generations.</p>
+            </section>
+
+            <div class="impact-showcase">
+                <div class="impact-card">
+                    <div class="impact-icon">🏖️</div>
+                    <h3>R100 Impact</h3>
+                    <p>Funds cleanup supplies for 10 volunteers for one beach cleanup session</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">📚</div>
+                    <h3>R300 Impact</h3>
+                    <p>Sponsors educational materials for 50 students in our school programs</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">🔬</div>
+                    <h3>R500 Impact</h3>
+                    <p>Supports one month of water quality testing and research data collection</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-icon">🌍</div>
+                    <h3>R1000 Impact</h3>
+                    <p>Organizes a complete community awareness campaign reaching 500+ people</p>
+                </div>
+            </div>
+
+            <section class="donation-section">
+                <h2>Make Your Donation</h2>
+                
+                <div class="monthly-option">
+                    <div class="monthly-toggle">
+                        <span>One-time</span>
+                        <div class="toggle-switch" id="monthlyToggle">
+                            <div class="toggle-slider"></div>
+                        </div>
+                        <span>Monthly</span>
+                    </div>
+                    <p id="monthlyText">Make a one-time donation to support our mission</p>
+                </div>
+
+                <div class="donation-options">
+                    <div class="donation-card" data-amount="100">
+                        <div class="donation-amount">R100</div>
+                        <div class="donation-impact">Cleanup supplies for 10 volunteers</div>
+                        <div class="donation-frequency">One-time</div>
+                    </div>
+                    <div class="donation-card" data-amount="300">
+                        <div class="donation-amount">R300</div>
+                        <div class="donation-impact">Educational materials for 50 students</div>
+                        <div class="donation-frequency">One-time</div>
+                    </div>
+                    <div class="donation-card" data-amount="500">
+                        <div class="donation-amount">R500</div>
+                        <div class="donation-impact">One month of water quality testing</div>
+                        <div class="donation-frequency">One-time</div>
+                    </div>
+                    <div class="donation-card" data-amount="1000">
+                        <div class="donation-amount">R1000</div>
+                        <div class="donation-impact">Complete community campaign</div>
+                        <div class="donation-frequency">One-time</div>
+                    </div>
+                </div>
+
+                <div class="custom-amount">
+                    <h3>Or enter a custom amount:</h3>
+                    <div class="amount-input">
+                        <span>R</span>
+                        <input type="number" id="customAmount" placeholder="Enter amount" min="10">
+                    </div>
+                </div>
+
+                <form class="donation-form" id="donationForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name *</label>
+                            <input type="text" id="lastName" name="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Payment Method *</label>
+                        <div class="payment-methods">
+                            <div class="payment-method" data-method="card">
+                                💳<br>Card
+                            </div>
+                            <div class="payment-method" data-method="paypal">
+                                💙<br>PayPal
+                            </div>
+                            <div class="payment-method" data-method="eft">
+                                🏦<br>EFT
+                            </div>
+                            <div class="payment-method" data-method="snapscan">
+                                📱<br>SnapScan
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="security-info">
+                        🔒 Your donation is secure and encrypted. We never store your payment information.
+                    </div>
+
+                    <button type="submit" class="donate-button">
+                        <span id="donateButtonText">Donate Now 💙</span>
+                    </button>
+                </form>
+            </section>
+
+            <section class="hero-section">
+                <h2>Thank You for Making Waves!</h2>
+                <p>Every donation, no matter the size, creates ripples of positive change in ocean conservation. Together, we can protect our blue planet for future generations.</p>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        let selectedAmount = 0;
+        let isMonthly = false;
+        let selectedPayment = '';
+
+        // Monthly toggle functionality
+        const monthlyToggle = document.getElementById('monthlyToggle');
+        const monthlyText = document.getElementById('monthlyText');
+        const donationCards = document.querySelectorAll('.donation-card');
+
+        monthlyToggle.addEventListener('click', function() {
+            isMonthly = !isMonthly;
+            this.classList.toggle('active');
+            
+            if (isMonthly) {
+                monthlyText.textContent = 'Become a monthly supporter - Cancel anytime';
+                donationCards.forEach(card => {
+                    const frequency = card.querySelector('.donation-frequency');
+                    frequency.textContent = 'Monthly';
+                });
+            } else {
+                monthlyText.textContent = 'Make a one-time donation to support our mission';
+                donationCards.forEach(card => {
+                    const frequency = card.querySelector('.donation-frequency');
+                    frequency.textContent = 'One-time';
+                });
+            }
+            
+            updateDonateButton();
+        });
+
+        // Donation amount selection
+        donationCards.forEach(card => {
+            card.addEventListener('click', function() {
+                donationCards.forEach(c => c.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedAmount = parseInt(this.dataset.amount);
+                document.getElementById('customAmount').value = '';
+                updateDonateButton();
+            });
+        });
+
+        // Custom amount input
+        document.getElementById('customAmount').addEventListener('input', function() {
+            donationCards.forEach(card => card.classList.remove('selected'));
+            selectedAmount = parseInt(this.value) || 0;
+            updateDonateButton();
+        });
+
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+                selectedPayment = this.dataset.method;
+            });
+        });
+
+        // Update donate button text
+        function updateDonateButton() {
+            const button = document.getElementById('donateButtonText');
+            if (selectedAmount > 0) {
+                const frequency = isMonthly ? '/month' : '';
+                button.textContent = `Donate R${selectedAmount}${frequency} 💙`;
+            } else {
+                button.textContent = 'Donate Now 💙';
+            }
+        }
+
+        // Form submission
+        document.getElementById('donationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (selectedAmount === 0) {
+                alert('Please select a donation amount.');
+                return;
+            }
+            
+            if (!selectedPayment) {
+                alert('Please select a payment method.');
+                return;
+            }
+            
+            const formData = new FormData(this);
+            const donateButton = document.querySelector('.donate-button');
+            const originalText = donateButton.innerHTML;
+            
+            // Simulate processing
+            donateButton.innerHTML = 'Processing... 🔄';
+            donateButton.style.background = '#f39c12';
+            
+            setTimeout(() => {
+                donateButton.innerHTML = 'Thank You! 🎉';
+                donateButton.style.background = '#27ae60';
+                
+                // Show success message
+                const successMessage = document.createElement('div');
+                successMessage.style.cssText = `
+                    background: #27ae60;
+                    color: white;
+                    padding: 25px;
+                    border-radius: 15px;
+                    text-align: center;
+                    margin-top: 20px;
+                    font-weight: bold;
+                    font-size: 1.1em;
+                `;
+                
+                const frequency = isMonthly ? 'monthly ' : '';
+                successMessage.innerHTML = `
+                    🌊 Thank you ${formData.get('firstName')}! Your ${frequency}donation of R${selectedAmount} has been processed successfully. 
+                    <br><br>
+                    You'll receive a confirmation email shortly. Your support makes a real difference in protecting our oceans! 💙
+                `;
+                
+                this.appendChild(successMessage);
+                
+                // Reset form after delay
+                setTimeout(() => {
+                    this.reset();
+                    donationCards.forEach(card => card.classList.remove('selected'));
+                    document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                    selectedAmount = 0;
+                    selectedPayment = '';
+                    donateButton.innerHTML = originalText;
+                    donateButton.style.background = 'linear-gradient(45deg, #0074D9, #39CCCC)';
+                    successMessage.remove();
+                }, 5000);
+                
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
